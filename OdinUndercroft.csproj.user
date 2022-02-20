@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ReferencePath>D:\Steam\steamapps\common\ValheimLATEST\BepInEx\core\;D:\Steam\steamapps\common\ValheimLATEST\unstripped_corlib\;D:\Steam\steamapps\common\ValheimLATEST\valheim_Data\Managed\</ReferencePath>
+  </PropertyGroup>
+</Project>
