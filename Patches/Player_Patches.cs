@@ -10,7 +10,7 @@ namespace OdinUndercroft.Patches
     [Harmony]
     static class Player_Patches
     {
-        const float overlapRadius = 20;
+        const float overlapRadius = 60;
         [HarmonyPatch(typeof(Player), "UpdatePlacementGhost")]
         [HarmonyPostfix]
         public static void Player_UpdatePlacementGhost(Player __instance, GameObject ___m_placementGhost)

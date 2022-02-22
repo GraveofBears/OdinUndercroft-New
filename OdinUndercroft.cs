@@ -38,7 +38,7 @@ namespace OdinUndercroft
             harmony = new Harmony(HarmonyGUID);
 
             harmony.PatchAll();
-            MaxNestedLimit = Config.Bind("General", "Max nested basements", 4,
+            MaxNestedLimit = Config.Bind("General", "Max nested basements", 1,
                 "The maximum number of basements you can incept into each other");
         }
         
