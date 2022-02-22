@@ -11,7 +11,7 @@ namespace OdinUndercroft
     [BepInPlugin(HGUIDLower, ModName, version)]
     public class OdinUndercroftPlugin : BaseUnityPlugin
     {
-        public const string version = "1.0.1";
+        public const string version = "1.0.3";
         public const string ModName = "OdinsUndercroft";
         internal const string Author = "Gravebear";
         internal const string HGUID = Author + "." + "OdinsUndercroft";
@@ -32,8 +32,9 @@ namespace OdinUndercroft
             BuildPiece buildPiece = new("odinsundercroft", "OdinsUndercroft");
             buildPiece.Name.English("Odins Undercroft");
             buildPiece.Description.English("A large stone basement");
-            buildPiece.RequiredItems.Add("Stone", 200, false);
+            buildPiece.RequiredItems.Add("Stone", 200, true);
             buildPiece.Prefab.gameObject.AddComponent<Basement>();
+
             harmony = new Harmony(HarmonyGUID);
 
             harmony.PatchAll();

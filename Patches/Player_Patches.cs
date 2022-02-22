@@ -11,7 +11,6 @@ namespace OdinUndercroft.Patches
     static class Player_Patches
     {
         const float overlapRadius = 20;
-
         [HarmonyPatch(typeof(Player), "UpdatePlacementGhost")]
         [HarmonyPostfix]
         public static void Player_UpdatePlacementGhost(Player __instance, GameObject ___m_placementGhost)
@@ -19,21 +18,25 @@ namespace OdinUndercroft.Patches
             if (!___m_placementGhost) return;
             var basementComponent = ___m_placementGhost.GetComponent<Basement>();
             if (!basementComponent) return;
-
-            if (Basement.allBasements == null) return;
-
-            // Check for existing basements in range
-            var ol = Basement.allBasements.Where(x => Vector3.Distance(x.transform.position, ___m_placementGhost.transform.position) < overlapRadius).Where(x => x.gameObject != ___m_placementGhost);
-
-            // Reflection to override private member using private nested type
+            if (Basement.allBasements.Count <= 0) return;
             Type type = typeof(Player).Assembly.GetType("Player+PlacementStatus");
             object moreSpace = type.GetField("MoreSpace").GetValue(__instance);
             FieldInfo statusField = __instance.GetType().GetField("m_placementStatus", BindingFlags.NonPublic | BindingFlags.Instance);
 
-            if (ol.Any(x => x.GetComponentInParent<Basement>()) || ___m_placementGhost.transform.position.y > 2500 * Mathf.Max(OdinUndercroft.OdinUndercroftPlugin.MaxNestedLimit.Value,0) + 2000)
+
+            foreach (var basement in Basement.allBasements)
             {
-                statusField.SetValue(__instance, moreSpace);
+                float dist = Vector3.Distance(basement.transform.position, Player.m_localPlayer.transform.position);
+                if (basement.mUID == basementComponent.mUID)
+                {
+                    continue;
+                }
+                if (dist <= overlapRadius)
+                {
+                    statusField.SetValue(__instance, moreSpace);
+                }
             }
+
         }
 
         [HarmonyPatch(typeof(Player), "UpdatePlacementGhost")]
@@ -65,8 +68,8 @@ namespace OdinUndercroft.Patches
             177 call Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
             178 brfalse System.Reflection.Emit.Label
             */
-            codes[164] = CodeInstruction.Call(typeof(Player_Patches), "OverrideNullEqualityInBasement");
-            codes[174]= CodeInstruction.Call(typeof(Player_Patches), "OverrideNullEqualityInBasement");
+            codes[162] = CodeInstruction.Call(typeof(Player_Patches), "OverrideNullEqualityInBasement");
+            codes[177]= CodeInstruction.Call(typeof(Player_Patches), "OverrideNullEqualityInBasement");
             return codes.AsEnumerable();
         }
 

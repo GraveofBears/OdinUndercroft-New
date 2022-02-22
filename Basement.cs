@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using BepInEx;
 using UnityEngine;
 
 namespace OdinUndercroft
@@ -9,13 +11,14 @@ namespace OdinUndercroft
         Bounds interiorBounds;
         Collider[] localColliders;
 
-        public static List<Basement> allBasements;
+        public static List<Basement> allBasements = new List<Basement>();
 
         GameObject b;
 
+        public string mUID;
         void Awake()
         {
-            if (allBasements == null) allBasements = new List<Basement>();
+
             allBasements.Add(this);
 
             localColliders = gameObject.GetComponentsInChildren<Collider>();
@@ -25,26 +28,10 @@ namespace OdinUndercroft
             interiorBounds = b.GetComponent<BoxCollider>().bounds;
         }
 
-        // Fun boat test
-        void Update()
+        private void OnEnable()
         {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-
-                var nview = GetComponent<ZNetView>();
-                var zdo = nview.GetZDO();
-                zdo.SetPrefab(nview.GetPrefabName().GetStableHashCode());
-                Debug.Log(zdo.GetPrefab());
-                Debug.Log(zdo.m_uid);
-                Debug.Log(nview.GetPrefabName().GetStableHashCode());
-                Debug.Log(ZNetScene.instance.GetPrefab(zdo.GetPrefab()).name);
-        //        var ships = Resources.FindObjectsOfTypeAll<Ship>().First();
-        //        var exterior = transform.Find("exterior");
-        //        exterior.SetParent(ships.m_sailObject.transform.parent.parent);
-        //        exterior.localPosition = Vector3.right;
-            }
+            mUID = System.Guid.NewGuid().ToString();
         }
-
         void OnDestroy()
         {
             allBasements.Remove(this);
@@ -57,7 +44,7 @@ namespace OdinUndercroft
             {
                 Debug.Log(item.name + " is preventing basement from being destroyed");
             }
-            return !ol.Any();            
-        } 
+            return !ol.Any();
+        }
     }
 }
