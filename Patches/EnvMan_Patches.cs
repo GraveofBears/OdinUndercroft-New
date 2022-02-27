@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 
 namespace OdinUndercroft.Patches
-{
+ {
     [Harmony]
     class EnvMan_Patches
     {
@@ -14,4 +14,4 @@ namespace OdinUndercroft.Patches
             EnvMan.instance.m_environments.Add(basementEnv);
         }
     }
-}
+} 
