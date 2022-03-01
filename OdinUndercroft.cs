@@ -13,7 +13,7 @@ namespace OdinUndercroft
     [BepInPlugin(HGUIDLower, ModName, version)]
     public class OdinUndercroftPlugin : BaseUnityPlugin
     {
-        public const string version = "1.0.6";
+        public const string version = "1.0.7";
         public const string ModName = "OdinsUndercroft";
         internal const string Author = "Gravebear";
         internal const string HGUID = Author + "." + "OdinsUndercroft";
@@ -31,6 +31,7 @@ namespace OdinUndercroft
         private static Harmony? harmony;
 
         private void Awake()
+
         {
             BuildPiece OdinsUndercroft = new("odins_undercroft", "OdinsUndercroft");
             OdinsUndercroft.Name.English("Odins Undercroft");
@@ -112,8 +113,8 @@ namespace OdinUndercroft
             MaxNestedLimit = Config.Bind("General", "Max nested basements", 1,
                 "The maximum number of basements you can incept into each other");
         }
-
-        [HarmonyPatch(typeof(ZNetScene), nameof(ZNetScene.Awake))]
+        
+        [HarmonyPatch(typeof(ZNetScene), Awake(ZNetScene.Awake))]
         static class ZNetScene_Awake_Patch
         {
             static void Postfix(ZNetScene __instance)

@@ -68,8 +68,8 @@ namespace OdinUndercroft.Patches
             177 call Boolean op_Equality(UnityEngine.Object, UnityEngine.Object)
             178 brfalse System.Reflection.Emit.Label
             */
-            codes[162] = CodeInstruction.Call(typeof(Player_Patches), "OverrideNullEqualityInBasement");
-            codes[177]= CodeInstruction.Call(typeof(Player_Patches), "OverrideNullEqualityInBasement");
+            codes[164] = CodeInstruction.Call(typeof(Player_Patches), "OverrideNullEqualityInBasement");
+            codes[189]= CodeInstruction.Call(typeof(Player_Patches), "OverrideNullEqualityInBasement");
             return codes.AsEnumerable();
         }
 
