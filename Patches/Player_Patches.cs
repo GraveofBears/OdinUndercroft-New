@@ -96,12 +96,12 @@ using System.Reflection.Emit;
 using HarmonyLib;
 using UnityEngine;
 
-namespace Basements.Patches
+namespace OdinUndercroft.Patches
 {
     [Harmony]
     static class Player_Patches
     {
-        const float overlapRadius = 60;
+        const float overlapRadius = 20;
 
         [HarmonyPatch(typeof(Player), "UpdatePlacementGhost")]
         [HarmonyPostfix]
@@ -138,10 +138,8 @@ namespace Basements.Patches
                         AccessTools.Method(
                             typeof(UnityEngine.Object), "op_Equality",
                             new Type[] { typeof(UnityEngine.Object), typeof(UnityEngine.Object) })))
-                .Advance(offset: 4)
-                .SetInstructionAndAdvance(
-                    Transpilers.EmitDelegate<Func<UnityEngine.Object, UnityEngine.Object, bool>>(
-                        OverrideNullEqualityInBasement))
+                .Advance(offset: 5)
+                .InsertAndAdvance(Transpilers.EmitDelegate<Func<bool, bool>>(HeightmapIsNullBasemementDelegate))
                 .MatchForward(
                     useEnd: false,
                     new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(Piece), nameof(Piece.m_groundOnly))),
@@ -153,24 +151,19 @@ namespace Basements.Patches
                         AccessTools.Method(
                             typeof(UnityEngine.Object), "op_Equality",
                             new Type[] { typeof(UnityEngine.Object), typeof(UnityEngine.Object) })))
-                .Advance(offset: 4)
-                .SetInstructionAndAdvance(
-                    Transpilers.EmitDelegate<Func<UnityEngine.Object, UnityEngine.Object, bool>>(
-                        OverrideNullEqualityInBasement))
+                .Advance(offset: 5)
+                .InsertAndAdvance(Transpilers.EmitDelegate<Func<bool, bool>>(HeightmapIsNullBasemementDelegate))
                 .InstructionEnumeration();
         }
 
-        static bool OverrideNullEqualityInBasement(UnityEngine.Object a, UnityEngine.Object b)
+        static bool HeightmapIsNullBasemementDelegate(bool isEqual)
         {
-            if (EnvMan.instance.GetCurrentEnvironment().m_name == "Basement")
+            if (EnvMan.m_instance.GetCurrentEnvironment().m_name == "Basement")
             {
                 return false;
             }
-            if (a == null && b == null)
-            {
-                return false;
-            }
-            return a == b;
+
+            return isEqual;
         }
     }
 }
