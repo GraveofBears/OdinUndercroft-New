@@ -11,7 +11,7 @@ namespace OdinUndercroft
     [BepInPlugin(HGUIDLower, ModName, version)]
     public class OdinUndercroftPlugin : BaseUnityPlugin
     {
-        public const string version = "1.1.0";
+        public const string version = "1.1.1";
         public const string ModName = "OdinsUndercroft";
         internal const string Author = "Gravebear";
         internal const string HGUID = Author + "." + "OdinsUndercroft";
