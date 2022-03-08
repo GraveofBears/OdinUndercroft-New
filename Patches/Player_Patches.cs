@@ -101,7 +101,7 @@ namespace OdinUndercroft.Patches
     [Harmony]
     static class Player_Patches
     {
-        const float overlapRadius = 20;
+        const float overlapRadius = 60;
 
         [HarmonyPatch(typeof(Player), "UpdatePlacementGhost")]
         [HarmonyPostfix]
@@ -115,7 +115,7 @@ namespace OdinUndercroft.Patches
             object moreSpace = type.GetField("MoreSpace").GetValue(__instance);
             FieldInfo statusField = __instance.GetType().GetField("m_placementStatus", BindingFlags.NonPublic | BindingFlags.Instance);
             var ol = Basement.allBasements.Where(x => Vector3.Distance(x.transform.position, ___m_placementGhost.transform.position) < overlapRadius).Where(x => x.gameObject != ___m_placementGhost);
-            if (ol.Any(x => x.GetComponentInParent<Basement>()) || ___m_placementGhost.transform.position.y > 2500 * Mathf.Max(BasementPlugin.MaxNestedLimit.Value, 0) + 2000)
+            if (ol.Any(x => x.GetComponentInParent<Basement>()) || ___m_placementGhost.transform.position.y > 2500 * Mathf.Max(OdinUndercroftPlugin.MaxNestedLimit.Value, 0) + 2000)
             {
                 statusField.SetValue(__instance, moreSpace);
             }

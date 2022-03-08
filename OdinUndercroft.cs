@@ -11,7 +11,7 @@ namespace OdinUndercroft
     [BepInPlugin(HGUIDLower, ModName, version)]
     public class OdinUndercroftPlugin : BaseUnityPlugin
     {
-        public const string version = "1.0.8";
+        public const string version = "1.1.0";
         public const string ModName = "OdinsUndercroft";
         internal const string Author = "Gravebear";
         internal const string HGUID = Author + "." + "OdinsUndercroft";
@@ -89,6 +89,26 @@ namespace OdinUndercroft
             OU_StoneBeam.Name.English("Odins Stone Beam");
             OU_StoneBeam.Description.English("A stone beam cap for OU walls");
             OU_StoneBeam.RequiredItems.Add("Stone", 2, true);
+
+            BuildPiece OU_Iron_Cage = new("odins_undercroft", "OU_Iron_Cage");
+            OU_Iron_Cage.Name.English("Odins Iron Cage");
+            OU_Iron_Cage.Description.English("An iron cage");
+            OU_Iron_Cage.RequiredItems.Add("Stone", 2, true);
+
+            BuildPiece OU_Swords_Crossed = new("odins_undercroft", "OU_Swords_Crossed");
+            OU_Swords_Crossed.Name.English("Odins Crossed Swords");
+            OU_Swords_Crossed.Description.English("A stone pare of swords");
+            OU_Swords_Crossed.RequiredItems.Add("Stone", 2, true);
+
+            BuildPiece OU_Wall_Shield = new("odins_undercroft", "OU_Wall_Shield");
+            OU_Wall_Shield.Name.English("Odins Wall Shield");
+            OU_Wall_Shield.Description.English("A shield deco for walls");
+            OU_Wall_Shield.RequiredItems.Add("Stone", 2, true);
+
+            BuildPiece OU_StoneRoof_Tile = new("odins_undercroft", "OU_StoneRoof_Tile");
+            OU_StoneRoof_Tile.Name.English("Odins StoneRoof Tile");
+            OU_StoneRoof_Tile.Description.English("A stone rooftile piece");
+            OU_StoneRoof_Tile.RequiredItems.Add("Stone", 2, true);
 
             harmony = new Harmony(HarmonyGUID);
 
