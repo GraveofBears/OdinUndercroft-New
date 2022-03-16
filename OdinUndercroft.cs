@@ -11,7 +11,7 @@ namespace OdinUndercroft
     [BepInPlugin(HGUIDLower, ModName, version)]
     public class OdinUndercroftPlugin : BaseUnityPlugin
     {
-        public const string version = "1.1.0";
+        public const string version = "1.1.2";
         public const string ModName = "OdinsUndercroft";
         internal const string Author = "Gravebear";
         internal const string HGUID = Author + "." + "OdinsUndercroft";
@@ -109,6 +109,16 @@ namespace OdinUndercroft
             OU_StoneRoof_Tile.Name.English("Odins StoneRoof Tile");
             OU_StoneRoof_Tile.Description.English("A stone rooftile piece");
             OU_StoneRoof_Tile.RequiredItems.Add("Stone", 2, true);
+
+            BuildPiece OU_StoneStair = new("odins_undercroft", "OU_StoneStair");
+            OU_StoneStair.Name.English("Odins StoneStairs");
+            OU_StoneStair.Description.English("A stone stair piece");
+            OU_StoneStair.RequiredItems.Add("Stone", 6, true);
+
+            BuildPiece OH_Undercroft_Crystal = new("odins_undercroft", "OH_Undercroft_Crystal");
+            OH_Undercroft_Crystal.Name.English("Odins StoneStairs");
+            OH_Undercroft_Crystal.Description.English("A stone stair piece");
+            OH_Undercroft_Crystal.RequiredItems.Add("Crystal", 1, true);
 
             harmony = new Harmony(HarmonyGUID);
 
