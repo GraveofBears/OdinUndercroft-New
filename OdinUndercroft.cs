@@ -3,15 +3,14 @@ using BepInEx;
 using BepInEx.Configuration;
 using HarmonyLib;
 using PieceManager;
-
-//using ServerSync;
+using ServerSync;
 
 namespace OdinUndercroft
 {
     [BepInPlugin(HGUIDLower, ModName, version)]
     public class OdinUndercroftPlugin : BaseUnityPlugin
     {
-        public const string version = "1.1.2";
+        public const string version = "1.1.3";
         public const string ModName = "OdinsUndercroft";
         internal const string Author = "Gravebear";
         internal const string HGUID = Author + "." + "OdinsUndercroft";
@@ -93,7 +92,7 @@ namespace OdinUndercroft
             BuildPiece OU_Iron_Cage = new("odins_undercroft", "OU_Iron_Cage");
             OU_Iron_Cage.Name.English("Odins Iron Cage");
             OU_Iron_Cage.Description.English("An iron cage");
-            OU_Iron_Cage.RequiredItems.Add("Stone", 2, true);
+            OU_Iron_Cage.RequiredItems.Add("Iron", 4, true);
 
             BuildPiece OU_Swords_Crossed = new("odins_undercroft", "OU_Swords_Crossed");
             OU_Swords_Crossed.Name.English("Odins Crossed Swords");
@@ -115,10 +114,15 @@ namespace OdinUndercroft
             OU_StoneStair.Description.English("A stone stair piece");
             OU_StoneStair.RequiredItems.Add("Stone", 6, true);
 
-            BuildPiece OH_Undercroft_Crystal = new("odins_undercroft", "OH_Undercroft_Crystal");
-            OH_Undercroft_Crystal.Name.English("Odins StoneStairs");
-            OH_Undercroft_Crystal.Description.English("A stone stair piece");
-            OH_Undercroft_Crystal.RequiredItems.Add("Crystal", 1, true);
+            BuildPiece OU_Large_Stone_Pillar = new("odins_undercroft", "OU_Large_Stone_Pillar");
+            OU_Large_Stone_Pillar.Name.English("Odins Large Stone Pillar");
+            OU_Large_Stone_Pillar.Description.English("A large stone pillar");
+            OU_Large_Stone_Pillar.RequiredItems.Add("Stone", 10, true);
+
+            BuildPiece OH_Undercroft_BuildSkull = new("odins_undercroft", "OH_Undercroft_BuildSkull");
+            OH_Undercroft_BuildSkull.Name.English("Odins Crafting Skull");
+            OH_Undercroft_BuildSkull.Description.English("Sets Build Area for undercroft pieces.");
+            OH_Undercroft_BuildSkull.RequiredItems.Add("BoneFragments", 1, true);
 
             harmony = new Harmony(HarmonyGUID);
 
