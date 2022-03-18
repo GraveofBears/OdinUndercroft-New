@@ -10,7 +10,7 @@ namespace OdinUndercroft
     [BepInPlugin(HGUIDLower, ModName, version)]
     public class OdinUndercroftPlugin : BaseUnityPlugin
     {
-        public const string version = "1.1.3";
+        public const string version = "1.1.5";
         public const string ModName = "OdinsUndercroft";
         internal const string Author = "Gravebear";
         internal const string HGUID = Author + "." + "OdinsUndercroft";
@@ -84,10 +84,20 @@ namespace OdinUndercroft
             OU_CornerCap.Description.English("A stone corner cap for OU walls");
             OU_CornerCap.RequiredItems.Add("Stone", 2, true);
 
+            BuildPiece OU_CornerCap_Small = new("odins_undercroft", "OU_CornerCap_Small");
+            OU_CornerCap_Small.Name.English("Odins CornerCap Small");
+            OU_CornerCap_Small.Description.English("A small stone corner cap for OU walls");
+            OU_CornerCap_Small.RequiredItems.Add("Stone", 1, true);
+
             BuildPiece OU_StoneBeam = new("odins_undercroft", "OU_StoneBeam");
             OU_StoneBeam.Name.English("Odins Stone Beam");
             OU_StoneBeam.Description.English("A stone beam cap for OU walls");
             OU_StoneBeam.RequiredItems.Add("Stone", 2, true);
+
+            BuildPiece OU_StoneBeam_Small = new("odins_undercroft", "OU_StoneBeam_Small");
+            OU_StoneBeam_Small.Name.English("Odins Stone Beam Small");
+            OU_StoneBeam_Small.Description.English("A small stone beam cap for OU walls");
+            OU_StoneBeam_Small.RequiredItems.Add("Stone", 1, true);
 
             BuildPiece OU_Iron_Cage = new("odins_undercroft", "OU_Iron_Cage");
             OU_Iron_Cage.Name.English("Odins Iron Cage");
@@ -123,6 +133,7 @@ namespace OdinUndercroft
             OH_Undercroft_BuildSkull.Name.English("Odins Crafting Skull");
             OH_Undercroft_BuildSkull.Description.English("Sets Build Area for undercroft pieces.");
             OH_Undercroft_BuildSkull.RequiredItems.Add("BoneFragments", 1, true);
+
 
             harmony = new Harmony(HarmonyGUID);
 
