@@ -10,7 +10,7 @@ namespace OdinUndercroft
     [BepInPlugin(HGUIDLower, ModName, version)]
     public class OdinUndercroftPlugin : BaseUnityPlugin
     {
-        public const string version = "1.1.5";
+        public const string version = "1.1.8";
         public const string ModName = "OdinsUndercroft";
         internal const string Author = "Gravebear";
         internal const string HGUID = Author + "." + "OdinsUndercroft";
@@ -39,6 +39,11 @@ namespace OdinUndercroft
             OU_MetalGrate.Description.English("A large metal grate");
             OU_MetalGrate.RequiredItems.Add("Iron", 1, true);
 
+            BuildPiece OU_Urn = new("odins_undercroft", "OU_Urn");
+            OU_Urn.Name.English("Odins Urn");
+            OU_Urn.Description.English("A place to keep your remains");
+            OU_Urn.RequiredItems.Add("Stone", 6, true);
+
             BuildPiece OU_Sarcophagus = new("odins_undercroft", "OU_Sarcophagus");
             OU_Sarcophagus.Name.English("Odins Sarcophagus");
             OU_Sarcophagus.Description.English("A large stone Sarcophagus");
@@ -51,17 +56,22 @@ namespace OdinUndercroft
 
             BuildPiece OU_Skeleton_Full = new("odins_undercroft", "OU_Skeleton_Full");
             OU_Skeleton_Full.Name.English("Odins Skeleton Full");
-            OU_Skeleton_Full.Description.English("An optimized Skeleton Full");
+            OU_Skeleton_Full.Description.English("A Skeleton Full");
             OU_Skeleton_Full.RequiredItems.Add("BoneFragments", 4, true);
+
+            BuildPiece OU_Skeleton_Ribs = new("odins_undercroft", "OU_Skeleton_Ribs");
+            OU_Skeleton_Ribs.Name.English("Odins Skeleton Ribs");
+            OU_Skeleton_Ribs.Description.English("A ribcage from a skeleton");
+            OU_Skeleton_Ribs.RequiredItems.Add("BoneFragments", 2, true);
 
             BuildPiece OU_Skeleton_Hanging = new("odins_undercroft", "OU_Skeleton_Hanging");
             OU_Skeleton_Hanging.Name.English("Odins Skeleton Hanging");
-            OU_Skeleton_Hanging.Description.English("An optimized Skeleton Hung");
+            OU_Skeleton_Hanging.Description.English("A Skeleton Hung");
             OU_Skeleton_Hanging.RequiredItems.Add("BoneFragments", 2, true);
 
             BuildPiece OU_Skeleton_Pile = new("odins_undercroft", "OU_Skeleton_Pile");
             OU_Skeleton_Pile.Name.English("Odins Skeleton Pile");
-            OU_Skeleton_Pile.Description.English("An optimized Skeleton Pile");
+            OU_Skeleton_Pile.Description.English("A Skeleton Pile");
             OU_Skeleton_Pile.RequiredItems.Add("BoneFragments", 2, true);
 
             BuildPiece OU_StoneArchway = new("odins_undercroft", "OU_StoneArchway");
@@ -73,6 +83,11 @@ namespace OdinUndercroft
             OU_StoneWall.Name.English("Odins StoneWall");
             OU_StoneWall.Description.English("A stone wall");
             OU_StoneWall.RequiredItems.Add("Stone", 2, true);
+
+            BuildPiece OU_StoneHalfWall = new("odins_undercroft", "OU_StoneHalfWall");
+            OU_StoneHalfWall.Name.English("Odins StoneHalfWall");
+            OU_StoneHalfWall.Description.English("A stone half wall");
+            OU_StoneHalfWall.RequiredItems.Add("Stone", 1, true);
 
             BuildPiece OU_DrainPipe = new("odins_undercroft", "OU_DrainPipe");
             OU_DrainPipe.Name.English("Odins Drinpipe");
@@ -119,6 +134,11 @@ namespace OdinUndercroft
             OU_StoneRoof_Tile.Description.English("A stone rooftile piece");
             OU_StoneRoof_Tile.RequiredItems.Add("Stone", 2, true);
 
+            BuildPiece OU_StoneFloor = new("odins_undercroft", "OU_StoneFloor");
+            OU_StoneFloor.Name.English("Odins Stone Floor");
+            OU_StoneFloor.Description.English("A stone floor piece");
+            OU_StoneFloor.RequiredItems.Add("Stone", 2, true);
+
             BuildPiece OU_StoneStair = new("odins_undercroft", "OU_StoneStair");
             OU_StoneStair.Name.English("Odins StoneStairs");
             OU_StoneStair.Description.English("A stone stair piece");
@@ -128,6 +148,11 @@ namespace OdinUndercroft
             OU_Large_Stone_Pillar.Name.English("Odins Large Stone Pillar");
             OU_Large_Stone_Pillar.Description.English("A large stone pillar");
             OU_Large_Stone_Pillar.RequiredItems.Add("Stone", 10, true);
+
+            BuildPiece OU_Medium_Stone_Pillar = new("odins_undercroft", "OU_Medium_Stone_Pillar");
+            OU_Medium_Stone_Pillar.Name.English("Odins Medium Stone Pillar");
+            OU_Medium_Stone_Pillar.Description.English("A medium stone pillar");
+            OU_Medium_Stone_Pillar.RequiredItems.Add("Stone", 6, true);
 
             BuildPiece OH_Undercroft_BuildSkull = new("odins_undercroft", "OH_Undercroft_BuildSkull");
             OH_Undercroft_BuildSkull.Name.English("Odins Crafting Skull");
